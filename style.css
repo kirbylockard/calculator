@@ -1,0 +1,101 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.calculator {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  background-color: #526acb;
+  width: 50%;
+  height: 70%;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+/* Inside Calculator */
+
+/* TOP SECTION */
+.top {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: "display display"
+                        "brand model"
+                        "solar .";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2fr 1fr 1fr;
+}
+
+.display {
+  grid-area: display;
+  background-color: lightgray;
+  border: solid black 5px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+  height: 2.25rem;
+  text-align: right;
+}
+
+.brand, .model {
+  display: flex;
+  line-height: 2rem;
+  font-size: 1.25rem;
+  padding: .25rem;
+  
+}
+.brand {
+  grid-area: brand;
+  font-size: 1.75rem;
+}
+
+.model {
+  grid-area: model;
+  justify-self: end;
+}
+
+.solar-border {
+  grid-area: solar;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 5px;
+}
+.solar-panel {
+  border-radius: 2.5px;
+  background-color: #441b07;
+}
+
+/* BUTTON SECTION */
+
+
+.btngroup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  height: 100%;
+}
+
+.btn {
+  margin: .25rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+.action {
+  background-color: #ca182f;
+}
