@@ -35,7 +35,7 @@ main {
   grid-template-rows: 2fr 1fr 1fr;
 }
 
-.display {
+#display {
   grid-area: display;
   background-color: lightgray;
   border: solid black 5px;
