@@ -1,12 +1,52 @@
 /* PROJECT STATUS
--basic operations functional
--need +/- button
+-----PHASE 1-----
+-floating point precision issue
+-limit length of string to container 
 -need to be able to switch operation
     5+-(num to subtract) switch from + operation to -
     add class to button for depressed action
     check for .depressed before performing action
-    swap action and depressed status if depressed is found
--OOP for buttons
+    swap action and depressed status if depressed is found?
+-2.2222222e15
+
+-Add data-operation attribute to buttons to bring in possibility to reduce code.
+-something like--------
+operations = SELECTELEMENTSBYCLASS?
+for operation in operationsList{
+  operation.addEventListener('click', () => {
+  if (nums.length == 0) {
+    nums.push(parseFloat(display.innerHTML));
+    operation = operation.getAttribute("data-operation");
+    resetDispMsg();
+  } else if (nums.length == 1) {
+    nums.push(parseFloat(display.innerHTML));
+    solve();
+    operation = operation.getAttribute("data-operation");
+    nums.push(parseFloat(display.innerHTML));
+    resetDispMsg();
+  } else if (parseFloat(display.innerHTML == solution)) {
+    nums.push(solution);
+    operation = operation.getAttribute("data-operation");
+    resetDispMsg();
+  }
+})
+}
+
+-----PHASE 2-----
+-OOP for buttons?
+-Refactor code where possible
+-Media Queries
+
+-----PHASE 3-----
+Add functionality
+  -see full operation
+  -"Take notes" button to save math onto scratch paper
+  -"Erase line"?
+  -"Cross out line"?
+
+-----PHASE 4-----
+Send notes to email
+
 */
 
 let dispMsg = '';
@@ -26,6 +66,7 @@ const subtract = document.getElementById('subtract');
 const add = document.getElementById('add');
 const exponent = document.getElementById('exp');
 const squareRoot = document.getElementById('sqr-root');
+const plusMinus = document.getElementById('plus-minus');
 
 /*-----FUNCTIONS-----*/
 
@@ -87,18 +128,24 @@ const resetAll = function () {
 }
 
 
-
 /*-----POGRAM-----*/ 
 
 //ASSIGN NUMBER BUTTON EVENTS
 for (let i = 0; i < numBtns.length; i++) {
   let num = numBtns[i];
-  if (display.innerHTML == solution) {
-    resetDisplay();
-  }
+  // if (display.innerHTML == solution) {
+  //   resetDisplay();
+  // }
   num.addEventListener('click', () => {
-    dispMsg += `${num.innerHTML}`;
-    display.innerHTML = dispMsg;
+    if (num.innerHTML == "." && dispMsg.includes(".")) {
+      return;
+    } else if (num.innerHTML =="." && dispMsg == '') {
+      dispMsg += `0.`;
+      display.innerHTML = dispMsg;
+    } else {
+      dispMsg += `${num.innerHTML}`;
+      display.innerHTML = dispMsg;
+    }
   })
 }
 
@@ -227,5 +274,15 @@ squareRoot.addEventListener('click', () => {
     nums.push(solution);
     operation = "squareRoot";
     solve();
+  }
+})
+
+plusMinus.addEventListener('click', () => {
+  if (dispMsg.charAt(0) != "-") {
+    dispMsg = "-" + dispMsg;
+    display.innerHTML = dispMsg;
+  } else if (dispMsg.charAt(0) == "-") {
+    dispMsg = dispMsg.substring(1);
+    display.innerHTML = dispMsg;
   }
 })

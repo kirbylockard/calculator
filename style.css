@@ -29,7 +29,7 @@ main {
   width: 100%;
   height: 100%;
   grid-template-areas: "display display"
-                        "brand model"
+                        "calc-info calc-info"
                         "solar .";
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 2fr 1fr 1fr;
@@ -49,21 +49,19 @@ main {
   text-align: right;
 }
 
-.brand, .model {
+.calc-info {
+  grid-area: calc-info;
   display: flex;
+  justify-content: space-between;
+}
+
+.brand, .model {
   line-height: 2rem;
   font-size: 1.25rem;
   padding: .25rem;
-  
 }
 .brand {
-  grid-area: brand;
   font-size: 1.75rem;
-}
-
-.model {
-  grid-area: model;
-  justify-self: end;
 }
 
 .solar-border {
@@ -99,4 +97,28 @@ main {
 
 .action {
   background-color: #ca182f;
+}
+
+
+
+/* ----------MEDIA QUERIES---------- */
+@media (max-width: 576px) {
+  .calculator {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    padding: 5%;
+    
+  }
+
+  .brand, .model {
+    line-height: 1.75rem;
+    font-size: 1.25rem;
+    padding: .25rem;
+  }
+
+  .brand {
+    font-size: 1.5rem;
+  }
+
 }
