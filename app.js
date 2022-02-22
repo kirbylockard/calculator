@@ -1,6 +1,5 @@
 /* PROJECT STATUS
 -----PHASE 1-----
--floating point precision issue
 -limit length of string to container 
 -2.2222222e15
 -css classes for operations
@@ -70,13 +69,13 @@ const resetAll = function () {
 
 const solve = function() {
   if (operation === 'add') {
-    solution = nums[0] + nums[1];
+    solution = Math.round((nums[0] + nums[1]) * 1e12) / 1e12;
   } else if (operation === 'subtract') {
-    solution = nums[0] - nums[1];
+    solution = Math.round((nums[0] - nums[1]) * 1e12) / 1e12;;
   } else if (operation === 'multiply') {
-    solution = nums[0] * nums[1];
+    solution = Math.round((nums[0] * nums[1]) * 1e12) / 1e12;;
   } else if (operation === 'divide') {
-    solution = nums[0] / nums[1];
+    solution = Math.round((nums[0] / nums[1]) * 1e12) / 1e12;;
   } else if (operation === 'exponent') {
     solution = Math.pow(nums[0], nums[1]);
   } else if (operation === 'squareRoot') {
