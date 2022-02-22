@@ -2,12 +2,11 @@
 -----PHASE 1-----
 -floating point precision issue
 -limit length of string to container 
--keep solution when -/+ is pressed
-  -keep 0 too at first
+-2.2222222e15
 -css classes for operations
   -timed
   -constant(cleared by numBtn)
--2.2222222e15
+  -added and removed with function
 
 
 -----PHASE 2-----
@@ -109,6 +108,14 @@ for (let i = 0; i < numBtns.length; i++) {
     } else if (num.innerHTML =="." && dispMsg == '') {
       dispMsg += `0.`;
       display.innerHTML = dispMsg;
+    } else if (num.innerHTML == "." && dispMsg == "-0") {
+      dispMsg = "-0.";
+      display.innerHTML = dispMsg;
+    } else if (dispMsg == "-0") {
+      dispMsg = "-" + `${num.innerHTML}`;
+      display.innerHTML = dispMsg;
+    } else if (num.innerHTML =="0" && parseFloat(dispMsg) === 0 && dispMsg.includes(".") == false ) {
+      return;
     } else {
       dispMsg += `${num.innerHTML}`;
       display.innerHTML = dispMsg;
@@ -118,7 +125,6 @@ for (let i = 0; i < numBtns.length; i++) {
 }
 
 //ASSIGN DOUBLE OPERAND EVENTS
-
 for (let i = 0; i < doubleOperands.length; i++) {
   let currentOpp = doubleOperands[i];
   let currentOppAssigned = currentOpp.dataset.operation; 
@@ -159,13 +165,19 @@ equals.addEventListener('click', () => {
 })
 
 plusMinus.addEventListener('click', () => {
-  if (dispMsg.charAt(0) != "-") {
+  if (display.innerHTML == "0" || dispMsg == "") {
+    dispMsg = "0";
+  }
+  if (parseFloat(display.innerHTML) == solution) {
+    dispMsg = "-" + solution;
+    display.innerHTML = dispMsg;
+  } else if (dispMsg.charAt(0) != "-") {
     dispMsg = "-" + dispMsg;
     display.innerHTML = dispMsg;
   } else if (dispMsg.charAt(0) == "-") {
     dispMsg = dispMsg.substring(1);
     display.innerHTML = dispMsg;
-  }
+  } 
 })
 
 squareRoot.addEventListener('click', () => {
