@@ -22,21 +22,28 @@ Add functionality
 Send notes to email
 
 */
-
+//vars needed for math operations
 let dispMsg = '';
 let nums = [];
 let operation;
 let solution;
 let clrNum = 0;
 let lastBtn;
-
+//Checking display and text size
+let dispTotal;
+let padding;
+let innerSpace;
+let textSize;
+//html elements
 const numBtns = document.getElementsByClassName('numBtn');
 const doubleOperands = document.getElementsByClassName('doubleOperand');
+const displayContainer = document.getElementById('display-container');
 const display = document.getElementById('display');
 const equals = document.getElementById('equals');
 const clr = document.getElementById('clr');
 const squareRoot = document.getElementById('sqr-root');
 const plusMinus = document.getElementById('plus-minus');
+
 
 /*-----FUNCTIONS-----*/
 
@@ -67,6 +74,22 @@ const resetAll = function () {
   resetDisplay();
 }
 
+const checkTextFits = function () {
+  dispTotal = displayContainer.clientWidth;
+  padding = parseFloat(window.getComputedStyle(displayContainer).getPropertyValue('padding-left'));
+  innerSpace = dispTotal - padding;
+  textSize = display.clientWidth;
+
+  if (textSize < innerSpace) {
+    console.log('text fits');
+    return true;
+  } else if (textSize > innerSpace) {
+    console.log('overflow text');
+    return false;
+  }
+}
+
+
 const solve = function() {
   if (operation === 'add') {
     solution = Math.round((nums[0] + nums[1]) * 1e12) / 1e12;
@@ -88,6 +111,10 @@ const solve = function() {
     err();
   } else {
     display.innerHTML = `${solution}`;
+  }
+
+  if (checkTextFits() == false) {
+    console.log('change solution to scientific notation')
   }
   resetVars();
 }

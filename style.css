@@ -35,18 +35,25 @@ main {
   grid-template-rows: 2fr 1fr 1fr;
 }
 
-#display {
+#display-container {
   grid-area: display;
   background-color: lightgray;
   border: solid black 5px;
   border-radius: 5px;
   padding: 10px;
   margin: 5px 0;
+
+  display: flex;
+  flex-direction: row-reverse;
   
   font-size: 2.25rem;
   line-height: 2.25rem;
   height: 2.25rem;
   text-align: right;
+}
+
+#display {
+  width: auto;
 }
 
 .calc-info {
