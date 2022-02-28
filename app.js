@@ -1,12 +1,7 @@
 /* PROJECT STATUS
 -----PHASE 1-----
--limit length of string to container 
--2.2222222e15
--css classes for operations
-  -timed
-  -constant(cleared by numBtn)
-  -added and removed with function
-
+-css classes for flash operations +/- CLR sqr-root =
+  -need to learn css transitions
 
 -----PHASE 2-----
 -Media Queries
@@ -25,10 +20,12 @@ Send notes to email
 //vars needed for math operations
 let dispMsg = '';
 let nums = [];
+let numsAfterDec = [];
 let operation;
 let solution;
 let clrNum = 0;
 let lastBtn;
+
 //Checking display and text size
 let dispTotal;
 let padding;
@@ -47,7 +44,10 @@ const plusMinus = document.getElementById('plus-minus');
 
 /*-----FUNCTIONS-----*/
 
-const saveNum = () => nums.push(parseFloat(display.innerHTML));
+const saveNum = function () {
+  console.log(`saving num ${parseFloat(display.innerHTML)}`);
+  nums.push(parseFloat(display.innerHTML));
+} 
 
 const err = function() {
   resetVars();
@@ -57,6 +57,7 @@ const err = function() {
 const resetVars = function() {
   dispMsg = '';
   nums = [];
+  numsAfterDec = [];
   operation = undefined;
   clrNum = 0;
 }
@@ -89,6 +90,11 @@ const checkTextFits = function () {
   }
 }
 
+const toggleActiveOppClass = function () {
+  let activeOperation = document.getElementById(operation);
+  activeOperation.classList.toggle('active-operation');
+}
+
 
 const solve = function() {
   if (operation === 'add') {
@@ -113,7 +119,10 @@ const solve = function() {
     display.innerHTML = `${solution}`;
   }
 
+ 
   if (checkTextFits() == false) {
+    solution = solution.toExponential(4);
+    display.innerHTML = `${solution}`;
     console.log('change solution to scientific notation')
   }
   resetVars();
@@ -146,7 +155,19 @@ for (let i = 0; i < numBtns.length; i++) {
       dispMsg += `${num.innerHTML}`;
       display.innerHTML = dispMsg;
     }
+    //no overflow
+    if (checkTextFits() == false) {
+      dispMsg = dispMsg.substring(0, dispMsg.length - 1);
+      display.innerHTML = dispMsg;
+      console.log('text doesnt fit. no more numbers');
+    }
+    //toggle operator class
+    if (lastBtn == 'operator') {
+      toggleActiveOppClass();
+    } 
+
     lastBtn = 'num';
+
   })
 }
 
@@ -156,18 +177,24 @@ for (let i = 0; i < doubleOperands.length; i++) {
   let currentOppAssigned = currentOpp.dataset.operation; 
   currentOpp.addEventListener('click', () => {
     if (lastBtn == "operator") {
+      toggleActiveOppClass();
       operation = currentOppAssigned;
+      toggleActiveOppClass();
     } else if (nums.length == 0) {
       saveNum()
       operation = currentOppAssigned;
       resetDispMsg();
+      toggleActiveOppClass();
     } else if (nums.length == 1) {
       saveNum()
       solve();
       operation = currentOppAssigned;
       saveNum()
       resetDispMsg();
+      toggleActiveOppClass();
     }
+
+    //currentOpp.classList.toggle('active-operation');
     lastBtn = "operator";
   })
 }

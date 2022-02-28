@@ -106,6 +106,16 @@ main {
   background-color: #ca182f;
 }
 
+.active-operation {
+  background-color: green;
+}
+
+.flash:target {
+  background-color: green;
+  /* need to learn transitions */
+}
+
+
 
 
 /* ----------MEDIA QUERIES---------- */
