@@ -1,10 +1,9 @@
 /* PROJECT STATUS
 -----PHASE 1-----
--css classes for flash operations +/- CLR sqr-root =
-  -need to learn css transitions
-
+COMPLETE
 -----PHASE 2-----
 -Media Queries
+-Improve CSS
 
 -----PHASE 3-----
 Add functionality
@@ -93,6 +92,11 @@ const checkTextFits = function () {
 const toggleActiveOppClass = function () {
   let activeOperation = document.getElementById(operation);
   activeOperation.classList.toggle('active-operation');
+}
+
+const flash = function (clickable) {
+  clickable.classList.toggle('active-operation');
+  setTimeout(() => {clickable.classList.toggle('active-operation')}, 300);
 }
 
 
@@ -208,6 +212,7 @@ clr.addEventListener('click', () => {
   } else {
     resetAll();
   }
+  flash(clr);
 })
 
 equals.addEventListener('click', () => {
@@ -215,6 +220,7 @@ equals.addEventListener('click', () => {
     saveNum();
     solve();
   } 
+  flash(equals);
 })
 
 plusMinus.addEventListener('click', () => {
@@ -231,6 +237,7 @@ plusMinus.addEventListener('click', () => {
     dispMsg = dispMsg.substring(1);
     display.innerHTML = dispMsg;
   } 
+  flash(plusMinus);
 })
 
 squareRoot.addEventListener('click', () => {
@@ -251,5 +258,6 @@ squareRoot.addEventListener('click', () => {
     operation = "squareRoot";
     solve();
   }
+  flash(squareRoot);
 })
 

@@ -110,13 +110,6 @@ main {
   background-color: green;
 }
 
-.flash:target {
-  background-color: green;
-  /* need to learn transitions */
-}
-
-
-
 
 /* ----------MEDIA QUERIES---------- */
 @media (max-width: 576px) {
