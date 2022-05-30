@@ -4,7 +4,6 @@ body {
   height: 100%;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
 }
 
 main {
@@ -139,5 +138,10 @@ main {
 
   .brand {
     font-size: 1.5rem;
+  }
+
+  #exponent,
+  #clr {
+    font-size: 1.25rem;
   }
 }
