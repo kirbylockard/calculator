@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Calculator</title>
-</head>
-<body>
-  <main>
-    <div class="calculator">
-      <div class="top">
-        <div id="display-container">
-          <div id="display">0</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <main>
+      <div class="calculator">
+        <div class="top">
+          <div id="display-container">
+            <div id="display">0</div>
+          </div>
+          <div class="calc-info">
+            <div class="brand">Kirby Instruments</div>
+            <div class="model">KI-100</div>
+          </div>
+          <div class="solar-border">
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+          </div>
         </div>
-        <div class="calc-info">
-          <div class="brand">Kirby Instruments</div>
-          <div class="model">KI-100</div>
+
+        <div class="btngroup">
+          <button class="btn action" id="plus-minus">&pm;</button>
+          <button class="btn action doubleOperand" id="exponent" data-operation="exponent">EX</button>
+          <button class="btn action" id="sqr-root" data-operation="squareRoot">&Sqrt;</button>
+          <button class="btn action doubleOperand" id="multiply" data-operation="multiply">x</button>
+          <button class="btn numBtn" id="num7">7</button>
+          <button class="btn numBtn" id="num8">8</button>
+          <button class="btn numBtn" id="num9">9</button>
+          <button class="btn action doubleOperand" id="divide" data-operation="divide">&divide;</button>
+          <button class="btn numBtn" id="num4">4</button>
+          <button class="btn numBtn" id="num5">5</button>
+          <button class="btn numBtn" id="num6">6</button>
+          <button class="btn action doubleOperand" id="add" data-operation="add">+</button>
+          <button class="btn numBtn" id="num1">1</button>
+          <button class="btn numBtn" id="num2">2</button>
+          <button class="btn numBtn" id="num3">3</button>
+          <button class="btn action doubleOperand" id="subtract" data-operation="subtract">-</button>
+          <button class="btn action" id="clr">CLR</button>
+          <button class="btn numBtn" id="num0">0</button>
+          <button class="btn numBtn" id="point">.</button>
+          <button class="btn action" id="equals">=</button>
         </div>
-        <div class="solar-border">
-          <div class="solar-panel"></div>
-          <div class="solar-panel"></div>
-          <div class="solar-panel"></div>
-          <div class="solar-panel"></div>
-        </div>
-        
       </div>
+    </main>
 
-      <div class="btngroup">
-        <button class="btn action" id="plus-minus">&pm;</button>
-        <button class="btn action doubleOperand" id="exponent" data-operation="exponent">EXP</button>
-        <button class="btn action" id="sqr-root" data-operation="squareRoot">&Sqrt;</button>
-        <button class="btn action doubleOperand" id="multiply" data-operation="multiply">x</button>
-        <button class="btn numBtn" id="num7">7</button>
-        <button class="btn numBtn" id="num8">8</button>
-        <button class="btn numBtn" id="num9">9</button>
-        <button class="btn action doubleOperand" id="divide" data-operation="divide">&divide;</button>
-        <button class="btn numBtn" id="num4">4</button>
-        <button class="btn numBtn" id="num5">5</button>
-        <button class="btn numBtn" id="num6">6</button>
-        <button class="btn action doubleOperand" id="add" data-operation="add">+</button>
-        <button class="btn numBtn" id="num1">1</button>
-        <button class="btn numBtn" id="num2">2</button>
-        <button class="btn numBtn" id="num3">3</button>
-        <button class="btn action doubleOperand" id="subtract" data-operation="subtract">-</button>
-        <button class="btn action" id="clr">CLR</button>
-        <button class="btn numBtn" id="num0">0</button>
-        <button class="btn numBtn" id="point">.</button>
-        <button class="btn action" id="equals">=</button>
-      </div>
-
-    </div>
-
-</main>
-
-
-  <script src="app.js"></script>  
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
